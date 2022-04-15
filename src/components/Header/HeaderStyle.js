@@ -7,11 +7,16 @@ export default makeStyles((theme) => ({
   },
   typography: {
       display: 'none',
-      [theme.breakpoints.up('xs')]: {
+      transition: 'all 1s ease',
+      '&:hover': { transform: "scale(1.1)",
+      userSelect: 'none',
+    },
+    [theme.breakpoints.up('xs')]: {
         display: 'block',
     },
-  },
-  searchBox: {
+},
+searchBox: {
+    transition: 'all 1s ease',
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
