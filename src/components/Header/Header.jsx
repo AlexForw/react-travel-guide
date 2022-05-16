@@ -1,32 +1,33 @@
-import React from 'react';
-import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
 import SearchIcon from '@material-ui/icons/Search'
-import useStyles from './HeaderStyle'
 
 
 const Header = () => {
-    const styles = useStyles()
 
     return (
-        <AppBar className={styles.header}>
-            <Toolbar className={styles.toolbar}>
-                <Typography variant='h5' className={styles.typography}>Your own guide</Typography>
-                <Box display='flex'>
-                <Typography variant='h6' className={styles.typography}>Enter your place</Typography>
+        <AppBar>
+            <Toolbar sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+            }}>
+                <Typography variant='h5' >Your own guide</Typography>
+                <Box sx={{
+                    display: 'flex',
+                    gap: '20px',
+                    alignItems: 'center'
+                }}>
+                <Typography variant='h6' >Enter your place</Typography>
 
-                {/* </Autocomplete> */}
-                    <div className={styles.searchBox}>
-                        <div className={styles.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase placeholder='Search..' className={styles.inputInput}></InputBase>
-                    </div>
-                {/* <Autocomplete> */}
-
+                <Box>
+                    <Box>
+                        <SearchIcon />
+                    </Box>
+                    <InputBase placeholder='Search..'></InputBase>
                 </Box>
-            </Toolbar>
-        </AppBar>
+
+            </Box>
+        </Toolbar>
+        </AppBar >
     );
 };
 
