@@ -1,12 +1,12 @@
-import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import SearchIcon from '@material-ui/icons/Search'
-import Search from '../../assets/Search/Search';
+import Search from '../../../assets/Search/Search';
 
 
 const Header = () => {
 
     return (
-        <AppBar>
+        <AppBar position='relative'>
             <Toolbar sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
