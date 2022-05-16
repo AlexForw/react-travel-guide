@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
 import SearchIcon from '@material-ui/icons/Search'
+import Search from '../../assets/Search/Search';
 
 
 const Header = () => {
@@ -20,9 +21,9 @@ const Header = () => {
 
                 <Box>
                     <Box>
-                        <SearchIcon />
+                        
+                        <Search text='Search..' icon={<SearchIcon/>}/>
                     </Box>
-                    <InputBase placeholder='Search..'></InputBase>
                 </Box>
 
             </Box>
