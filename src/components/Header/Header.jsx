@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import SearchIcon from '@material-ui/icons/Search'
-import Search from '../../../assets/Search/Search';
+import Search from '../../assets/Search/Search';
 
 
 const Header = () => {
