@@ -17,7 +17,6 @@ const App = () => {
     if (bounds) {
       getPlacesData(bounds.sw, bounds.ne)
       .then(data => {
-          console.log(data);
           setPlaces(data)
         })
     }
@@ -28,7 +27,7 @@ const App = () => {
       <Header />
       <Box display='flex'>
         <List places={places} />
-        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} />
+        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} places={places}/>
       </Box>
     </>
   );

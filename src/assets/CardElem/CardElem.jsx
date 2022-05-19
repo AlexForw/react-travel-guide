@@ -8,7 +8,6 @@ import {Place, Phone} from '@material-ui/icons';
 
 
 const CardElem = ({ data }) => {
-    console.log(data.photo?.images?.medium?.url);
     return (
         <Card sx={{ marginBottom: { xs: 1, sm: 3, md: 4 }, marginTop: { xs: 1, sm: 3, md: 4 } }}>
             <CardMedia
