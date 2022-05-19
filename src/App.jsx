@@ -13,7 +13,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({})
   const [bounds, setBounds] = useState(null)
   console.log(coordinates);
-
+  console.log(bounds);
   useEffect(()=>{
     getPlacesData().then(data => setPlaces(data))
   },[])
@@ -22,7 +22,7 @@ const App = () => {
       <Header />
       <Box display='flex'>
         <List />
-        <Map setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
+        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
       </Box>
     </>
   );
