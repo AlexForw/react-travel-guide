@@ -2,11 +2,9 @@ import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui
 import { useState } from 'react'
 import CardElem from '../../assets/CardElem/CardElem';
 
-const List = () => {
+const List = ({places}) => {
     const [type, setType] = useState('restaurants')
     const [rating, setRating] = useState('0')
-
-    const places = ['hello', 'hello', 'How are you', 'Nice to meet you']
 
     return (
         <Box flex={2} p={2}>
@@ -32,7 +30,7 @@ const List = () => {
             </FormControl>
             <Box sx={{height:'75vh', overflow:'auto'}}>
                 {places?.map((e, i) => {
-                    return (<CardElem key={i} text={e} />)
+                    return (<CardElem key={i} data={e} />)
                 })}
             </Box>
         </Box>

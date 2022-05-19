@@ -8,28 +8,27 @@ import { useEffect, useState } from 'react';
 
 
 const App = () => {
-  const [places, setPlaces] = useState('')
+  const [places, setPlaces] = useState([])
 
   const [coordinates, setCoordinates] = useState({})
   const [bounds, setBounds] = useState(null)
-  
-  
-  useEffect(()=>{
-    console.log(bounds);
-    if(bounds){
-    getPlacesData(bounds.sw, bounds.ne)
-    .then(data => {
-      console.log(data);
-      setPlaces(data)
-    })
-  }
-  },[coordinates, bounds])
+
+  useEffect(() => {
+    if (bounds) {
+      getPlacesData(bounds.sw, bounds.ne)
+      .then(data => {
+          console.log(data);
+          setPlaces(data)
+        })
+    }
+  }, [coordinates, bounds])
+  console.log(places);
   return (
     <>
       <Header />
       <Box display='flex'>
-        <List />
-        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates}/>
+        <List places={places} />
+        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} />
       </Box>
     </>
   );
