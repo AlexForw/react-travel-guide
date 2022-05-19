@@ -1,13 +1,13 @@
 import { useMap } from "react-leaflet";
 
-const useMapElem = ({setBounds, setCoordinates}) => {
+const useMapElem = ({ setBounds, setCoordinates }) => {
 
     const map = useMap()
     const checkBounds = () => {
-        setBounds({ne: map.getBounds()._northEast, sw: map.getBounds()._southWest})
+        setBounds({ ne: map.getBounds()._northEast, sw: map.getBounds()._southWest })
         setCoordinates(map.getCenter())
     }
-    map.on('moveend',checkBounds)
+    map.on('moveend', checkBounds)
     return null
 };
 

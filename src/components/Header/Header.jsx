@@ -17,17 +17,17 @@ const Header = () => {
                     gap: '20px',
                     alignItems: 'center'
                 }}>
-                <Typography variant='h6' >Enter your place</Typography>
+                    <Typography variant='h6' >Enter your place</Typography>
 
-                <Box>
                     <Box>
-                        
-                        <Search text='Search..' icon={<SearchIcon/>}/>
-                    </Box>
-                </Box>
+                        <Box>
 
-            </Box>
-        </Toolbar>
+                            <Search text='Search..' icon={<SearchIcon />} />
+                        </Box>
+                    </Box>
+
+                </Box>
+            </Toolbar>
         </AppBar >
     );
 };

@@ -2,7 +2,7 @@ import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui
 import { useState } from 'react'
 import CardElem from '../../assets/CardElem/CardElem';
 
-const List = ({places}) => {
+const List = ({ places }) => {
     const [type, setType] = useState('restaurants')
     const [rating, setRating] = useState('0')
 
@@ -28,7 +28,7 @@ const List = ({places}) => {
                     <MenuItem value={4.5}>Above 4.5</MenuItem>
                 </Select>
             </FormControl>
-            <Box sx={{height:'75vh', overflow:'auto'}}>
+            <Box sx={{ height: '75vh', overflow: 'auto' }}>
                 {places?.map((e, i) => {
                     return (<CardElem key={i} data={e} />)
                 })}
