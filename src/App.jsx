@@ -12,11 +12,18 @@ const App = () => {
 
   const [coordinates, setCoordinates] = useState({})
   const [bounds, setBounds] = useState(null)
-  console.log(coordinates);
-  console.log(bounds);
+  
+  
   useEffect(()=>{
-    getPlacesData().then(data => setPlaces(data))
-  },[])
+    console.log(bounds);
+    if(bounds){
+    getPlacesData(bounds.sw, bounds.ne)
+    .then(data => {
+      console.log(data);
+      setPlaces(data)
+    })
+  }
+  },[coordinates, bounds])
   return (
     <>
       <Header />
