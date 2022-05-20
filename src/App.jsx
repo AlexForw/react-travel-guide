@@ -5,13 +5,16 @@ import Map from './components/Map/Map';
 import './App.css'
 import { getPlacesData } from './api/index'
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 const App = () => {
   const [places, setPlaces] = useState([])
-
-  const [coordinates, setCoordinates] = useState({})
-  const [bounds, setBounds] = useState({})
+  const dispatch = useDispatch()
+  const bounds = useSelector(state => state.cord.bounds)
+  const coordinates = useSelector(state => state.cord.coordinates)
+  console.log(bounds);
 
   useEffect(() => {
     if (bounds) {
@@ -27,7 +30,7 @@ const App = () => {
       <Header />
       <Box display='flex'>
         <List places={places} />
-        <Map bounds={bounds} setCoordinates={setCoordinates} setBounds={setBounds} coordinates={coordinates} places={places} />
+        <Map places={places} />
       </Box>
     </>
   );

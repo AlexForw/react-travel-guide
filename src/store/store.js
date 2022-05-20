@@ -4,7 +4,7 @@ import cordSlice from "./cordSlice";
 
 
 export const store = configureStore({
-    redusers:{
+    reducer: {
         cord: cordSlice,
     },
 }

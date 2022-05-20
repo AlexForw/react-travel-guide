@@ -4,8 +4,7 @@ import UseMapElem from './UseMapElem'
 
 
 
-const Map = ({ setBounds, setCoordinates, places }) => {
-
+const Map = ({ places }) => {
     return (
         <Box flex={4} p={2} height='90vh' display='flex' gap={2}>
             <MapContainer style={{ height: '100%', width: '100%', margin: '50 50 50 50' }} center={[55.7185054, 52.3721038]} zoom={13} scrollWheelZoom={false}>
@@ -13,7 +12,7 @@ const Map = ({ setBounds, setCoordinates, places }) => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <UseMapElem setBounds={setBounds} setCoordinates={setCoordinates} />
+                <UseMapElem/>
 
                 {places?.map((point, i) => {
                     return point?.latitude && (
