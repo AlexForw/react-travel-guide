@@ -4,18 +4,17 @@ import axios from "axios";
 
 export const getPlacesData = createAsyncThunk(
     'cord/getApi',
-    async function (sw, ne) {
+    async function (info,{rejectWithValue}) {
         try {
 
             const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
 
-
             const { data: { data } } = await axios.get(URL, {
                 params: {
-                    bl_latitude: sw.lat,
-                    tr_latitude: ne.lat,
-                    bl_longitude: sw.lng,
-                    tr_longitude: ne.lng,
+                    bl_latitude: info.sw.lat,
+                    tr_latitude: info.ne.lat,
+                    bl_longitude: info.sw.lng,
+                    tr_longitude: info.ne.lng,
                 },
                 headers: {
                     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
@@ -25,7 +24,7 @@ export const getPlacesData = createAsyncThunk(
 
             return data
         } catch (error) {
-            console.log(error);
+            return rejectWithValue(error.message)
         }
     }
 )
@@ -33,6 +32,7 @@ export const getPlacesData = createAsyncThunk(
 const initialState = {
     coordinates: {},
     bounds: {},
+    places: [],
     status: null,
     error: null,
 }
@@ -46,7 +46,7 @@ export const cordSlice = createSlice({
         },
         setCoordinates: (state, action) => {
             state.coordinates = action.payload
-        },
+        }
     },
     extraReducers: {
         [getPlacesData.pending]: (state) => {
@@ -55,12 +55,13 @@ export const cordSlice = createSlice({
         },
         [getPlacesData.fulfilled]: (state, action) => {
             state.status = 'resolved'
+            state.places = action.payload
             state.error = null
         },
         [getPlacesData.rejected]: (state, action) => {
-            // state.status = 'resolved'
-            // state.error = null
-         },
+            state.status = 'rejected'
+            state.error = action.payload
+        },
     }
 })
 

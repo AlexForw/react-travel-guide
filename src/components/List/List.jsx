@@ -1,11 +1,12 @@
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useState } from 'react'
 import CardElem from '../../assets/CardElem/CardElem';
+import { useSelector } from 'react-redux'
 
-const List = ({ places }) => {
+const List = () => {
     const [type, setType] = useState('restaurants')
     const [rating, setRating] = useState('0')
-
+    const places = useSelector(state => state.cord.places)
     return (
         <Box flex={2} p={2}>
             <Typography variant='h4'>Places around you</Typography>

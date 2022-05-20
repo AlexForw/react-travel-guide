@@ -3,34 +3,28 @@ import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 import './App.css'
-import { getPlacesData } from './api/index'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { getPlacesData } from './store/cordSlice';
 
 
 const App = () => {
-  const [places, setPlaces] = useState([])
-  const bounds = useSelector(state => state.cord.bounds)
-  const coordinates = useSelector(state => state.cord.coordinates)
+  const { places, coordinates, bounds } = useSelector(state => state.cord)
   const dispatch = useDispatch()
   console.log(bounds);
 
   useEffect(() => {
     if (bounds) {
-      getPlacesData(bounds.sw, bounds.ne)
-        .then(data => {
-          setPlaces(data)
-        })
+      dispatch(getPlacesData({sw: bounds.sw, ne: bounds.ne}))
     }
-  }, [bounds])
+  }, [dispatch, bounds])
   console.log(places);
   return (
     <>
       <Header />
       <Box display='flex'>
-        <List places={places} />
-        <Map places={places} />
+        <List/>
+        <Map/>
       </Box>
     </>
   );
