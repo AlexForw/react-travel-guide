@@ -11,9 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const [places, setPlaces] = useState([])
-  const dispatch = useDispatch()
   const bounds = useSelector(state => state.cord.bounds)
   const coordinates = useSelector(state => state.cord.coordinates)
+  const dispatch = useDispatch()
   console.log(bounds);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const App = () => {
           setPlaces(data)
         })
     }
-  }, [coordinates, bounds])
+  }, [bounds])
   console.log(places);
   return (
     <>
