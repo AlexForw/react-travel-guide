@@ -7,7 +7,7 @@ export const getPlacesData = createAsyncThunk(
     async function (info,{rejectWithValue}) {
         try {
 
-            const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
+            const URL = `https://travel-advisor.p.rapidapi.com/${info.type}/list-in-boundary`
 
             const { data: { data } } = await axios.get(URL, {
                 params: {

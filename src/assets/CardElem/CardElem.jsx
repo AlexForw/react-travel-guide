@@ -23,7 +23,7 @@ const CardElem = ({ data }) => {
             <CardContent>
                 <Typography variant='h6'>{data.name}</Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Rating value={Number(data.rating)} variant='subtitle1'>Price</Rating>
+                    <Rating value={Number(data.rating)} variant='subtitle1' readOnly>Price</Rating>
                     <Typography variant='subtitle1'>{data.num_reviews} votes</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
