@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { Box, Divider, Chip } from '@mui/material';
 import { Place, Phone } from '@material-ui/icons';
+import { Rating } from '@material-ui/lab';
 
 
 const CardElem = ({ data }) => {
@@ -21,6 +22,10 @@ const CardElem = ({ data }) => {
             />
             <CardContent>
                 <Typography variant='h6'>{data.name}</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Rating value={Number(data.rating)} variant='subtitle1'>Price</Rating>
+                    <Typography variant='subtitle1'>{data.num_reviews} votes</Typography>
+                </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant='subtitle1'>Price</Typography>
                     <Typography variant='subtitle1'>{data.price ? data.price : '$5 - $10'}</Typography>
