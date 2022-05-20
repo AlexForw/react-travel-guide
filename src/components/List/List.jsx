@@ -1,12 +1,9 @@
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import { useState } from 'react'
 import CardElem from '../../assets/CardElem/CardElem';
 import { useSelector } from 'react-redux'
 
-const List = () => {
-    const [type, setType] = useState('restaurants')
-    const [rating, setRating] = useState('0')
-    const places = useSelector(state => state.cord.places)
+const List = ({rating, type, setType, setRating}) => {
+    const { places, status, error } = useSelector(state => state.cord)
     return (
         <Box flex={2} p={2}>
             <Typography variant='h4'>Places around you</Typography>
@@ -15,7 +12,7 @@ const List = () => {
                 <InputLabel>Type</InputLabel>
                 <Select value={type} onChange={(e) => setType(e.target.value)}>
                     <MenuItem value='restaurants'>Restaurants</MenuItem>
-                    <MenuItem value='hotel'>Hotel</MenuItem>
+                    <MenuItem value='hotels'>Hotels</MenuItem>
                     <MenuItem value='attractions'>Attractions</MenuItem>
                 </Select>
             </FormControl>
@@ -29,11 +26,17 @@ const List = () => {
                     <MenuItem value={4.5}>Above 4.5</MenuItem>
                 </Select>
             </FormControl>
-            <Box sx={{ height: '75vh', overflow: 'auto' }}>
-                {places?.map((e, i) => {
-                    return (<CardElem key={i} data={e} />)
-                })}
-            </Box>
+            {(status === 'loading') ?
+                (<Box>Loading</Box>) :
+                (status === 'rejected') ?
+                    (<Box>An error occurred: {error}</Box>) :
+
+                    (<Box sx={{ height: '75vh', overflow: 'auto' }}>
+                        {places?.map((e, i) => {
+                            return (<CardElem key={i} data={e} />)
+                        })}
+                    </Box>)
+            }
         </Box>
     );
 };
