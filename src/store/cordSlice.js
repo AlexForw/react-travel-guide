@@ -55,7 +55,7 @@ export const cordSlice = createSlice({
         },
         [getPlacesData.fulfilled]: (state, action) => {
             state.status = 'resolved'
-            state.places = action.payload
+            state.places = action.payload.filter((e)=> e.name && e.num_reviews)
             state.error = null
         },
         [getPlacesData.rejected]: (state, action) => {

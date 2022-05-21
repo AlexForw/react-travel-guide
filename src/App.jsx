@@ -22,7 +22,7 @@ const App = () => {
     const filter = places.filter((place) => place.rating > rating)
 
     setFilterArr(filter)
-  }, [rating])
+  }, [rating, places])
   console.log(filterArr);
 
   useEffect(() => {
