@@ -11,15 +11,25 @@ import { getPlacesData } from './store/cordSlice';
 const App = () => {
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('0')
-
+  const [filterArr, setFilterArr] = useState([])
 
   const { places, coordinates, bounds } = useSelector(state => state.cord)
   const dispatch = useDispatch()
   console.log(bounds);
 
+
+  useEffect(() => {
+    const filter = places.filter((place) => place.rating > rating)
+
+    setFilterArr(filter)
+  }, [rating])
+  console.log(filterArr);
+
   useEffect(() => {
     if (bounds) {
       dispatch(getPlacesData({ type, sw: bounds.sw, ne: bounds.ne }))
+      setFilterArr([])
+      setRating('0')
     }
   }, [dispatch, bounds, type])
   console.log(places);
@@ -27,8 +37,8 @@ const App = () => {
     <>
       <Header />
       <Box display='flex'>
-        <List rating={rating} type={type} setType={setType} setRating={setRating} />
-        <Map />
+        <List filterArr={filterArr} rating={rating} type={type} setType={setType} setRating={setRating} />
+        <Map filterArr={filterArr} />
       </Box>
     </>
   );

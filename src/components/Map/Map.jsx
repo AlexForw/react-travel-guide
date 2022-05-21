@@ -5,7 +5,7 @@ import UseMapElem from './UseMapElem'
 
 
 
-const Map = () => {
+const Map = ({ filterArr }) => {
     const places = useSelector(state => state.cord.places)
     return (
         <Box flex={4} p={2} height='90vh' display='flex' gap={2}>
@@ -14,9 +14,9 @@ const Map = () => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <UseMapElem/>
+                <UseMapElem />
 
-                {places?.map((point, i) => {
+                {(filterArr.length > 0 ? filterArr : places)?.map((point, i) => {
                     return point?.latitude && (
                         <Marker key={i} position={[point.latitude, point.longitude]}>
                             <Popup>

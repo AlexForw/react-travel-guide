@@ -2,8 +2,8 @@ import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui
 import CardElem from '../../assets/CardElem/CardElem';
 import { useSelector } from 'react-redux'
 
-const List = ({rating, type, setType, setRating}) => {
-    const { places, status, error } = useSelector(state => state.cord)
+const List = ({ rating, type, setType, setRating, filterArr }) => {
+    const { places, status } = useSelector(state => state.cord)
     return (
         <Box flex={2} p={2}>
             <Typography variant='h4'>Places around you</Typography>
@@ -20,7 +20,7 @@ const List = ({rating, type, setType, setRating}) => {
             <FormControl>
                 <InputLabel>Rating</InputLabel>
                 <Select value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <MenuItem value={0}>All</MenuItem>
+                    <MenuItem value={0}>All ratings</MenuItem>
                     <MenuItem value={3}>Above 3.0</MenuItem>
                     <MenuItem value={4}>Above 4.0</MenuItem>
                     <MenuItem value={4.5}>Above 4.5</MenuItem>
@@ -29,10 +29,9 @@ const List = ({rating, type, setType, setRating}) => {
             {(status === 'loading') ?
                 (<Box>Loading</Box>) :
                 (status === 'rejected') ?
-                    (<Box>An error occurred: {error}</Box>) :
-
+                    (<Box>Move the map to start</Box>) :
                     (<Box sx={{ height: '75vh', overflow: 'auto' }}>
-                        {places?.map((e, i) => {
+                        {(filterArr.length > 0 ? filterArr : places)?.map((e, i) => {
                             return (<CardElem key={i} data={e} />)
                         })}
                     </Box>)
