@@ -17,21 +17,21 @@ const App = () => {
   const dispatch = useDispatch()
 
 
-  // useEffect(() => {
-  //   const filter = places.filter((place) => place.rating > rating)
+  useEffect(() => {
+    const filter = places.filter((place) => place.rating > rating)
 
-  //   setFilterArr(filter)
-  // }, [rating, places])
-  // console.log(filterArr);
+    setFilterArr(filter)
+  }, [rating, places])
+  console.log(filterArr);
 
-  // useEffect(() => {
-  //   if (bounds) {
-  //     dispatch(getPlacesData({ type, sw: bounds.sw, ne: bounds.ne }))
-  //     setFilterArr([])
-  //     setRating('0')
-  //   }
-  // }, [dispatch, bounds, type])
-  // console.log(places);
+  useEffect(() => {
+    if (bounds) {
+      dispatch(getPlacesData({ type, sw: bounds.sw, ne: bounds.ne }))
+      setFilterArr([])
+      setRating('0')
+    }
+  }, [dispatch, bounds, type])
+  console.log(places);
   return (
     <>
       <Header />

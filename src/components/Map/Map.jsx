@@ -16,7 +16,6 @@ const Map = ({ filterArr }) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <UseMapElem />
-                <ChangeView />
 
                 {(filterArr.length > 0 ? filterArr : places)?.map((point, i) => {
                     return point?.latitude && (
@@ -29,6 +28,7 @@ const Map = ({ filterArr }) => {
                     )
                 }
                 )}
+                <ChangeView />
             </MapContainer>
         </Box>
     );
