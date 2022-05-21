@@ -6,11 +6,10 @@ export const getCities = createAsyncThunk(
     'cord/getCities',
     async function (city, { rejectWithValue }) {
         try {
-            console.log(city);
             const URL = 'https://spott.p.rapidapi.com/places/autocomplete'
 
 
-            const {data} = await axios.get(URL, {
+            const { data } = await axios.get(URL, {
 
                 params: { limit: '10', skip: '0', q: city, type: 'CITY' },
                 headers: {
@@ -18,7 +17,6 @@ export const getCities = createAsyncThunk(
                     'X-RapidAPI-Key': 'ef2b898bd6msh61efe35f6e31be6p175661jsn769f45957103'
                 }
             })
-            // console.log({ data:data.cities });
             return data
         } catch (error) {
             return rejectWithValue(error.message)
@@ -56,7 +54,7 @@ export const getPlacesData = createAsyncThunk(
 
 
 const initialState = {
-    coordinates: {},
+    coordinates: { lat: 55.7185054, lng: 52.3721038 },
     bounds: {},
     places: [],
     status: null,

@@ -50,12 +50,17 @@ const Search = ({ icon, text }) => {
     const dispatch = useDispatch()
     const [value, setValue] = useState('')
     const cities = useSelector(state => state.cord.cities)
-    console.log(useSelector(state=>state.cord));
 
     useEffect(() => {
         dispatch(getCities(value))
     }, [value, dispatch])
-    console.log(cities);
+
+    const getCords = (cords) =>{
+        dispatch(setCoordinates(cords))
+        setValue('')
+    }
+
+
     return (
         <Box>
             <SearchBox>
@@ -70,14 +75,14 @@ const Search = ({ icon, text }) => {
                         setValue(e.target.value)
                     }}
                 />
+                <Box sx={{ background: 'white', color: 'text.primary', position: 'absolute', zIndex: '4222', width: '100%', maxHeight: '120px', overflow: 'auto' }}>
+                    {value.length > 1 && (
+                        cities?.map(arr => (
+                            <Box key={arr.id} sx={{ p: 1, cursor: 'pointer', '&:hover': { backgroundColor: 'rgb(221, 208, 208)' } }} onClick={() => getCords({ lat: arr.coordinates.latitude, lng: arr.coordinates.longitude })}>{arr.name} <Box sx={{opacity:0.5}}>{arr.country.name}</Box></Box>
+                        ))
+                    )}
+                </Box>
             </SearchBox>
-            <Box sx={{ background: 'white', color: 'text.primary',position:'absolute',zIndex:'4222' }}>
-                {value.length > 1 ? (
-                    cities?.map(arr => (
-                        <Box maxWidth='234px' width='100%' key={arr.id} sx={{ background: 'white' }} onClick={() => dispatch(setCoordinates({ lat: arr.coordinates.latitude, lng: arr.coordinates.longitude }))}>{arr.name}</Box>
-                    ))
-                ) : console.log('1')}
-            </Box>
         </Box>
 
 
