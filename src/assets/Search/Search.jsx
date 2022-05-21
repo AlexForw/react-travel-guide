@@ -55,7 +55,7 @@ const Search = ({ icon, text }) => {
         dispatch(getCities(value))
     }, [value, dispatch])
 
-    const getCords = (cords) =>{
+    const getCords = (cords) => {
         dispatch(setCoordinates(cords))
         setValue('')
     }
@@ -78,7 +78,7 @@ const Search = ({ icon, text }) => {
                 <Box sx={{ background: 'white', color: 'text.primary', position: 'absolute', zIndex: '4222', width: '100%', maxHeight: '120px', overflow: 'auto' }}>
                     {value.length > 1 && (
                         cities?.map(arr => (
-                            <Box key={arr.id} sx={{ p: 1, cursor: 'pointer', '&:hover': { backgroundColor: 'rgb(221, 208, 208)' } }} onClick={() => getCords({ lat: arr.coordinates.latitude, lng: arr.coordinates.longitude })}>{arr.name} <Box sx={{opacity:0.5}}>{arr.country.name}</Box></Box>
+                            <Box key={arr.id} sx={{ p: 1, cursor: 'pointer', '&:hover': { backgroundColor: 'rgb(221, 208, 208)' } }} onClick={() => getCords({ lat: arr.coordinates.latitude, lng: arr.coordinates.longitude })}>{arr.name} <Box sx={{ opacity: 0.5 }}>{arr.country.name}</Box></Box>
                         ))
                     )}
                 </Box>

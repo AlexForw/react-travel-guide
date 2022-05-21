@@ -1,6 +1,6 @@
 import { useMap } from "react-leaflet";
 import { useDispatch } from "react-redux";
-import { setBounds} from "../../store/cordSlice";
+import { setBounds } from "../../store/cordSlice";
 
 const useMapElem = () => {
     const dispatch = useDispatch()
@@ -12,10 +12,10 @@ const useMapElem = () => {
                 lat: map.getBounds()._northEast.lat,
                 lng: map.getBounds()._northEast.lng,
             },
-             sw: {
-                 lat: map.getBounds()._southWest.lat,
-                 lng: map.getBounds()._southWest.lng,
-                }
+            sw: {
+                lat: map.getBounds()._southWest.lat,
+                lng: map.getBounds()._southWest.lng,
+            }
         }))
     }
     map.on('moveend', checkBounds)

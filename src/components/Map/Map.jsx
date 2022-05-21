@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useSelector } from 'react-redux';
+import ChangeView from './ChangeView';
 import UseMapElem from './UseMapElem'
 
 
@@ -15,6 +16,7 @@ const Map = ({ filterArr }) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <UseMapElem />
+                <ChangeView />
 
                 {(filterArr.length > 0 ? filterArr : places)?.map((point, i) => {
                     return point?.latitude && (
