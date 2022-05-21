@@ -6,7 +6,7 @@ import UseMapElem from './UseMapElem'
 
 
 const Map = ({ filterArr }) => {
-    const places = useSelector(state => state.cord.places)
+    const { places, coordinates } = useSelector(state => state.cord)
     return (
         <Box flex={4} p={2} height='90vh' display='flex' gap={2}>
             <MapContainer style={{ height: '100%', width: '100%', margin: '50 50 50 50' }} center={[55.7185054, 52.3721038]} zoom={13} scrollWheelZoom={false}>

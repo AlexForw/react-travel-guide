@@ -1,6 +1,8 @@
-import { InputBase } from '@mui/material';
-import React from 'react';
+import { InputBase, Box } from '@mui/material';
+import React, { useState, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux'
+import { getCities, setCoordinates } from '../../store/cordSlice';
 
 
 
@@ -44,20 +46,41 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const Search = ({ onChange, icon, text, value, type }) => {
+const Search = ({ icon, text }) => {
+    const dispatch = useDispatch()
+    const [value, setValue] = useState('')
+    const cities = useSelector(state => state.cord.cities)
+    console.log(useSelector(state=>state.cord));
+
+    useEffect(() => {
+        dispatch(getCities(value))
+    }, [value, dispatch])
+    console.log(cities);
     return (
-        <SearchBox>
-            <SearchIconWrapper>
-                {icon}
-            </SearchIconWrapper>
-            <StyledInputBase
-                type={type}
-                value={value}
-                placeholder={text}
-                inputProps={{ 'aria-label': 'search' }}
-                onChange={onChange}
-            />
-        </SearchBox>
+        <Box>
+            <SearchBox>
+                <SearchIconWrapper>
+                    {icon}
+                </SearchIconWrapper>
+                <StyledInputBase
+                    value={value}
+                    placeholder={text}
+                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={(e) => {
+                        setValue(e.target.value)
+                    }}
+                />
+            </SearchBox>
+            <Box sx={{ background: 'white', color: 'text.primary',position:'absolute',zIndex:'4222' }}>
+                {value.length > 1 ? (
+                    cities?.map(arr => (
+                        <Box maxWidth='234px' width='100%' key={arr.id} sx={{ background: 'white' }} onClick={() => dispatch(setCoordinates({ lat: arr.coordinates.latitude, lng: arr.coordinates.longitude }))}>{arr.name}</Box>
+                    ))
+                ) : console.log('1')}
+            </Box>
+        </Box>
+
+
     );
 };
 
