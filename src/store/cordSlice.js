@@ -60,6 +60,9 @@ const initialState = {
     status: null,
     error: null,
     cities: [],
+    filterArr: [],
+    rating: 0,
+    type: 'restaurants',
 }
 
 export const cordSlice = createSlice({
@@ -71,6 +74,15 @@ export const cordSlice = createSlice({
         },
         setCoordinates: (state, action) => {
             state.coordinates = action.payload
+        },
+        setFilterArr: (state, action) => {
+            state.filterArr = action.payload
+        },
+        setRating: (state, action) => {
+            state.rating = action.payload
+        },
+        setType: (state, action) => {
+            state.type = action.payload
         }
     },
     extraReducers: {
@@ -93,5 +105,5 @@ export const cordSlice = createSlice({
     }
 })
 
-export const { setBounds, setCoordinates } = cordSlice.actions
+export const { setBounds, setCoordinates, setFilterArr, setRating, setType } = cordSlice.actions
 export default cordSlice.reducer

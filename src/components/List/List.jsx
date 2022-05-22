@@ -1,18 +1,29 @@
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import CardElem from '../../assets/CardElem/CardElem';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import BounceLoader from "react-spinners/BounceLoader";
+import { useEffect } from 'react';
+import { setFilterArr, setRating, setType } from '../../store/cordSlice';
 
 
-const List = ({ rating, type, setType, setRating, filterArr }) => {
-    const { places, status } = useSelector(state => state.cord)
+const List = () => {
+    const { places, status, rating, filterArr, type } = useSelector(state => state.cord)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const filter = places.filter((place) => place.rating > rating)
+
+        dispatch(setFilterArr(filter))
+    }, [rating, places, dispatch])
+    console.log(filterArr);
+
     return (
         <Box flex={2} p={2}>
-            <Typography variant='h4'>Places around you</Typography>
+            <Typography variant='h4' mb={1} display={{ xs: 'none', md: 'block' }}>Places around you</Typography>
 
             <FormControl>
                 <InputLabel>Type</InputLabel>
-                <Select value={type} onChange={(e) => setType(e.target.value)}>
+                <Select value={type} onChange={(e) => dispatch(setType(e.target.value))}>
                     <MenuItem value='restaurants'>Restaurants</MenuItem>
                     <MenuItem value='hotels'>Hotels</MenuItem>
                     <MenuItem value='attractions'>Attractions</MenuItem>
@@ -21,7 +32,7 @@ const List = ({ rating, type, setType, setRating, filterArr }) => {
 
             <FormControl>
                 <InputLabel>Rating</InputLabel>
-                <Select value={rating} onChange={(e) => setRating(e.target.value)}>
+                <Select value={rating} onChange={(e) => dispatch(setRating(e.target.value))}>
                     <MenuItem value={0}>All ratings</MenuItem>
                     <MenuItem value={3}>Above 3.0</MenuItem>
                     <MenuItem value={4}>Above 4.0</MenuItem>
@@ -29,11 +40,11 @@ const List = ({ rating, type, setType, setRating, filterArr }) => {
                 </Select>
             </FormControl>
             {(status === 'loading') ?
-                (<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70%' }}><BounceLoader color='#0770EC' loading={!!status} size={80} /></Box>) :
+                (<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '65%' }}><BounceLoader color='#0770EC' loading={!!status} size={80} /></Box>) :
                 (status === 'rejected') ?
                     (<Box>Move the map to start</Box>) :
-                    (<Box sx={{ height: '70vh', overflow: 'auto' }}>
-                        {(filterArr.length > 0 ? filterArr : places)?.map((e, i) => {
+                    (<Box sx={{ height: { xs: '56vh', md: '65vh' }, overflow: 'auto' }}>
+                        {(filterArr?.length > 0 ? filterArr : places)?.map((e, i) => {
                             return (<CardElem key={i} data={e} />)
                         })}
                     </Box>)
