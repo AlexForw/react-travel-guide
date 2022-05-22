@@ -18,7 +18,7 @@ const List = () => {
     console.log(filterArr);
 
     return (
-        <Box flex={2} p={2}>
+        <Box p={2}>
             <Typography variant='h4' mb={1} display={{ xs: 'none', md: 'block' }}>Places around you</Typography>
 
             <FormControl>

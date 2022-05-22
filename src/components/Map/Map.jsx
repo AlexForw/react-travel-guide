@@ -9,8 +9,8 @@ import UseMapElem from './UseMapElem'
 const Map = () => {
     const { places, coordinates, filterArr } = useSelector(state => state.cord)
     return (
-        <Box flex={4} p={2} height='90vh' display='flex' gap={2}>
-            <MapContainer style={{ height: '100vh', width: '100%', margin: '50 50 50 50' }} center={[coordinates.lat, coordinates.lng]} zoom={13} scrollWheelZoom={false}>
+        <Box height='80vh' display='flex' gap={2} p={2}>
+            <MapContainer style={{ height: '90vh', width: '100%', margin: '50 50 50 50' }} center={[coordinates.lat, coordinates.lng]} zoom={13} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

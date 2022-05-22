@@ -20,14 +20,16 @@ const App = () => {
       dispatch(setFilterArr([]))
       dispatch(setRating('0'))
     }
-  }, [dispatch, bounds, type])
+  }, [bounds, type, dispatch])
   console.log(places);
   return (
     <>
       <Header />
       <Box display='flex'>
-        <List />
-        <Map />
+        <Box flex={2} display={{ xs: 'none', sm: 'block' }}>
+          <List />
+        </Box>
+        <Box flex={4}><Map /></Box>
       </Box>
     </>
   );

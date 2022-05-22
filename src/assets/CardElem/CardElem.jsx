@@ -24,24 +24,24 @@ const CardElem = ({ data }) => {
                 <Typography variant='h6'>{data.name}</Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Rating value={Number(data.rating)} variant='subtitle1' readOnly>Price</Rating>
-                    <Typography variant='subtitle1'>{data.num_reviews} votes</Typography>
+                    <Typography variant='subtitle1'>{data.num_reviews}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant='subtitle1'>Price</Typography>
                     <Typography variant='subtitle1'>{data.price ? data.price : '$5 - $10'}</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-between' }}>
                     <Typography variant='subtitle1' fontSize='13px'>Ranking</Typography>
                     <Typography variant='subtitle1' fontSize='13px'>{data.ranking ? data.ranking : 'without rank'}</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1.5 }}>
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, flexWrap: 'wrap', gap: 1, mt: 1.5 }}>
                     {data?.cuisine?.map((elem) => (
                         <Chip key={elem.key} label={elem.name} />
                     ))}
                 </Box>
 
                 {data?.address && (
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1.5 }}>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-between', mt: 1.5 }}>
                         <Typography variant='subtitle1' fontSize='13px'><Place /></Typography>
                         <Typography variant='subtitle1' fontSize='13px'>{data.address}</Typography>
                     </Box>

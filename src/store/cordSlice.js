@@ -29,7 +29,6 @@ export const getPlacesData = createAsyncThunk(
     'cord/getApi',
     async function (info, { rejectWithValue }) {
         try {
-
             const URL = `https://travel-advisor.p.rapidapi.com/${info.type}/list-in-boundary`
 
             const { data: { data } } = await axios.get(URL, {
@@ -41,7 +40,7 @@ export const getPlacesData = createAsyncThunk(
                 },
                 headers: {
                     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
-                    'X-RapidAPI-Key': 'ef2b898bd6msh61efe35f6e31be6p175661jsn769f45957103'
+                    'X-RapidAPI-Key': '633a8c3d09mshd9ed5d30ead881cp17af81jsna64302b52775'
                 }
             })
 
