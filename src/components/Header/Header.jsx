@@ -11,13 +11,13 @@ const Header = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
             }}>
-                <Typography variant='h5' >Your own guide</Typography>
+                <Typography variant='h5' >Shelter</Typography>
                 <Box sx={{
                     display: 'flex',
                     gap: '20px',
                     alignItems: 'center'
                 }}>
-                    <Typography variant='h6' >Enter your place</Typography>
+                    <Typography variant='h6' >Enter place</Typography>
 
                     <Box>
                         <Box>

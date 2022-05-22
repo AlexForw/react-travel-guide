@@ -1,6 +1,8 @@
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import CardElem from '../../assets/CardElem/CardElem';
 import { useSelector } from 'react-redux'
+import BounceLoader from "react-spinners/BounceLoader";
+
 
 const List = ({ rating, type, setType, setRating, filterArr }) => {
     const { places, status } = useSelector(state => state.cord)
@@ -27,10 +29,10 @@ const List = ({ rating, type, setType, setRating, filterArr }) => {
                 </Select>
             </FormControl>
             {(status === 'loading') ?
-                (<Box>Loading</Box>) :
+                (<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70%' }}><BounceLoader color='#0770EC' loading={!!status} size={80} /></Box>) :
                 (status === 'rejected') ?
                     (<Box>Move the map to start</Box>) :
-                    (<Box sx={{ height: '75vh', overflow: 'auto' }}>
+                    (<Box sx={{ height: '70vh', overflow: 'auto' }}>
                         {(filterArr.length > 0 ? filterArr : places)?.map((e, i) => {
                             return (<CardElem key={i} data={e} />)
                         })}
