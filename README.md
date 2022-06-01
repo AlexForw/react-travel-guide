@@ -19,7 +19,7 @@
 <span><img src='https://img.shields.io/badge/-Material UI-05122A?style=flat&logo=MUI' alt='MUI' height='25'/></span>
 <span><img src='https://img.shields.io/badge/-Redux Toolkit-05122A?style=flat&logo=redux&logoColor=darkviolet' alt='redux toolkit' height='25'/></span>
 <span><img src='https://img.shields.io/badge/-Leaflet-05122A?style=flat&logo=leaflet&logoColor=green' alt='leaflet' height='25'/></span></div>
-<div><span><img src='https://img.shields.io/badge/-Firebase-05122A?style=flat&logo=firebase' alt='firebase' height='25'/></span>
+<div>
 <span><img src='https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5' alt='html' height='25'/></span>
 <span><img src='https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS3&logoColor=1572B6' alt='css' height='25'/></span>
 <span><img src='https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript' alt='js' height='25'/></span>
