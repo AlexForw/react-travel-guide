@@ -41,13 +41,11 @@ const List = () => {
             </FormControl>
             {(status === 'loading') ?
                 (<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '65%' }}><BounceLoader color='#0770EC' loading={!!status} size={80} /></Box>) :
-                (status === 'rejected') ?
-                    (<Box>Move the map to start</Box>) :
-                    (<Box sx={{ height: { xs: '56vh', md: '65vh' }, overflow: 'auto' }}>
-                        {(filterArr?.length > 0 ? filterArr : places)?.map((e, i) => {
-                            return (<CardElem key={i} data={e} />)
-                        })}
-                    </Box>)
+                (<Box sx={{ height: { xs: '56vh', md: '65vh' }, overflow: 'auto' }}>
+                    {(filterArr?.length > 0 ? filterArr : places)?.map((e, i) => {
+                        return (<CardElem key={i} data={e} />)
+                    })}
+                </Box>)
             }
         </Box>
     );
